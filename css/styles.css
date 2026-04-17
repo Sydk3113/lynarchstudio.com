@@ -1498,3 +1498,43 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
   }
 
 }
+/* ============================================================
+   FINAL FIX — TRUE CENTER (NO DRIFT)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .hero-center {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* CIRCLE */
+  .hero-monogram-bg {
+    position: relative;
+  }
+
+  .hero-monogram-img {
+    width: 260px;
+    opacity: 0.25;
+    display: block;
+  }
+
+  /* LOGO EXACT CENTER */
+  .hero-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-logo {
+    width: 70%;
+    max-width: 240px;
+  }
+
+}
