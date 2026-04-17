@@ -1538,3 +1538,38 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
   }
 
 }
+
+   @media (max-width: 768px) {
+
+  /* reset weird positioning */
+  .hero-content {
+    position: relative !important;
+    transform: none !important;
+    text-align: center;
+    margin-top: -180px; /* THIS pulls logo into circle */
+  }
+
+  /* circle size */
+  .hero-monogram-img {
+    width: 260px !important;
+    opacity: 0.25;
+  }
+
+  /* center everything */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px 60px;
+  }
+
+  /* buttons center */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+}
