@@ -1506,3 +1506,34 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
   }
 
 }
+
+/* ============================================================
+   LYNARCH — TRUE CENTER ALIGN (LOGO ↔ CIRCLE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* MAKE HERO A REFERENCE */
+  .hero {
+    position: relative;
+  }
+
+  /* CENTER THE CIRCLE EXACTLY */
+  .hero-monogram-bg {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* FORCE LOGO TO SAME CENTER */
+  .hero-content {
+    position: absolute !important;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 100%;
+    text-align: center;
+  }
+
+}
