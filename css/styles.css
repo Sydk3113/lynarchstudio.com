@@ -1425,3 +1425,56 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
   .founder-card { padding: 22px 24px; }
   .lightbox-bio { font-size: 11px; max-width: 100%; }
 }
+@media (max-width: 768px) {
+
+  /* center everything */
+  body {
+    text-align: center;
+  }
+
+  /* FIX BIG CIRCLE */
+  .hero-circle {
+    width: 280px !important;
+    height: 280px !important;
+    margin: 0 auto;
+  }
+
+  /* FIX LOGO SIZE */
+  .hero-logo {
+    width: 80% !important;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* FIX TITLE TEXT */
+  h1 {
+    font-size: 28px !important;
+    line-height: 1.2;
+  }
+
+  /* FIX SUBTEXT */
+  .hero-subtext {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  /* FIX BUTTONS */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .buttons a {
+    width: 100%;
+    padding: 14px;
+  }
+
+  /* HIDE NAV (temporary fix) */
+  nav {
+    display: none;
+  }
+
+}
