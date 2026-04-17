@@ -1427,3 +1427,39 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
 }
 @media (max-width: 768px) {
 
+@media (max-width: 768px) {
+
+  /* stop layout breaking */
+  .hero {
+    height: auto !important;
+    padding: 100px 20px 60px !important;
+  }
+
+  /* keep circle centered */
+  .hero-monogram-bg {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-monogram-img {
+    width: 260px;
+    opacity: 0.25;
+  }
+
+  /* KEEP LOGO NORMAL (no absolute, no tricks) */
+  .hero-content {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  /* buttons clean */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+}
+   
