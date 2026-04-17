@@ -1478,3 +1478,52 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
   }
 
 }
+
+@media (max-width: 768px) {
+
+  * {
+    max-width: 100% !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* BREAK ABSOLUTE POSITIONING */
+  .hero,
+  .hero-content,
+  .hero-circle,
+  .hero-logo {
+    position: relative !important;
+    transform: none !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .hero-content {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .hero {
+    height: auto !important;
+    padding: 80px 20px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  h1, h2, p {
+    word-break: break-word;
+  }
+
+}
