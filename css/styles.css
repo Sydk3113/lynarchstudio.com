@@ -1428,71 +1428,85 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
 @media (max-width: 768px) {
 
 /* ============================================================
-   CLEAN MOBILE FIX — LYNARCH HERO (FINAL)
+   LYNARCH — HARD MOBILE OVERRIDE (CLEAN & WORKING)
    ============================================================ */
 
 @media (max-width: 768px) {
 
-  /* NAV */
+  /* RESET LAYOUT */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* NAV FIX */
   .nav {
-    height: 80px;
+    height: 80px !important;
+    padding: 0 20px !important;
   }
 
   .nav-logo-img {
-    height: 70px;
+    height: 60px !important;
   }
 
-  /* HERO */
+  /* HERO FIX */
   .hero {
-    height: auto;
-    min-height: auto;
-    padding: 120px 20px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 110px 20px 60px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
-  /* REMOVE SIDE CLUTTER */
+  /* REMOVE SIDE ELEMENTS */
   .hero-side,
   .hero-location-tag,
-  .scroll-indicator {
+  .scroll-indicator,
+  .hero-corner {
     display: none !important;
   }
 
-  /* MONOGRAM SCALE */
+  /* MONOGRAM BACKGROUND */
   .hero-monogram-img {
-    width: 85vw;
-    max-width: 420px;
-    opacity: 0.25;
+    width: 85vw !important;
+    max-width: 400px !important;
+    opacity: 0.25 !important;
   }
 
-  /* TEXT */
+  /* HERO CONTENT */
+  .hero-content {
+    position: relative !important;
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  /* TOP TEXT */
   .hero-eyebrow {
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    margin-bottom: 20px;
+    font-size: 9px !important;
+    letter-spacing: 0.25em !important;
+    margin-bottom: 18px !important;
   }
 
   /* LOGO */
-  .hero-logo {
-    width: 85%;
-    max-width: 320px;
+  .hero-logo-wrap {
+    margin-bottom: 28px !important;
   }
 
-  .hero-logo-wrap {
-    margin-bottom: 32px;
+  .hero-logo {
+    width: 80% !important;
+    max-width: 300px !important;
   }
 
   /* BUTTONS */
   .hero-actions {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
   }
 
   .hero-btn {
-    width: 220px;
-    padding: 14px;
+    width: 200px !important;
+    padding: 14px !important;
   }
 
 }
