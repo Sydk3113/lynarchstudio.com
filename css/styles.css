@@ -1428,85 +1428,90 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
 @media (max-width: 768px) {
 
 /* ============================================================
-   LYNARCH — HARD MOBILE OVERRIDE (CLEAN & WORKING)
+   LYNARCH — HYBRID MOBILE FIX (CENTER + LIFTED)
    ============================================================ */
 
 @media (max-width: 768px) {
 
-  /* RESET LAYOUT */
-  body {
-    overflow-x: hidden;
-  }
-
-  /* NAV FIX */
-  .nav {
-    height: 80px !important;
-    padding: 0 20px !important;
-  }
-
-  .nav-logo-img {
-    height: 60px !important;
-  }
-
-  /* HERO FIX */
+  /* HERO BASE */
   .hero {
+    position: relative;
     height: auto !important;
-    min-height: auto !important;
-    padding: 110px 20px 60px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
+    min-height: 100vh;
+    padding: 120px 20px 60px;
+    display: flex;
+    justify-content: center;
   }
 
-  /* REMOVE SIDE ELEMENTS */
-  .hero-side,
-  .hero-location-tag,
-  .scroll-indicator,
-  .hero-corner {
-    display: none !important;
+  /* CENTER SYSTEM (SHIFTED UP SLIGHTLY) */
+  .hero-center {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
   }
 
-  /* MONOGRAM BACKGROUND */
+  /* MONOGRAM (CIRCLE) */
+  .hero-monogram-bg {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   .hero-monogram-img {
-    width: 85vw !important;
-    max-width: 400px !important;
-    opacity: 0.25 !important;
+    width: 85vw;
+    max-width: 360px;
+    opacity: 0.25;
   }
 
-  /* HERO CONTENT */
+  /* LOGO — PERFECTLY ALIGNED TO CIRCLE */
   .hero-content {
-    position: relative !important;
-    transform: none !important;
-    text-align: center !important;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    text-align: center;
+    width: 100%;
+  }
+
+  .hero-logo {
+    width: 75%;
+    max-width: 260px;
+    margin: 0 auto;
   }
 
   /* TOP TEXT */
   .hero-eyebrow {
-    font-size: 9px !important;
-    letter-spacing: 0.25em !important;
-    margin-bottom: 18px !important;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 0.25em;
   }
 
-  /* LOGO */
-  .hero-logo-wrap {
-    margin-bottom: 28px !important;
-  }
-
-  .hero-logo {
-    width: 80% !important;
-    max-width: 300px !important;
-  }
-
-  /* BUTTONS */
+  /* BUTTONS BELOW CIRCLE */
   .hero-actions {
-    flex-direction: column !important;
-    gap: 12px !important;
-    margin-top: 18px !important;
+    position: absolute;
+    top: calc(45% + 160px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .hero-btn {
-    width: 200px !important;
-    padding: 14px !important;
+    width: 200px;
+    padding: 14px;
+  }
+
+  /* REMOVE CLUTTER */
+  .hero-side,
+  .scroll-indicator,
+  .hero-location-tag {
+    display: none !important;
   }
 
 }
