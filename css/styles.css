@@ -1428,168 +1428,64 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
 @media (max-width: 768px) {
 
 /* ============================================================
-   LYNARCH — FINAL CLEAN MOBILE (NO BREAKAGE)
+   LYNARCH — CLEAN MOBILE RESET (WORKING VERSION)
    ============================================================ */
 
 @media (max-width: 768px) {
 
-  /* HERO BASE — REMOVE DESKTOP CENTERING */
-  .hero {
-    height: auto !important;
-    min-height: auto !important;
-    display: block !important;
-    padding: 110px 20px 60px !important;
-  }
-
-  /* REMOVE SIDE ELEMENTS */
-  .hero-side,
-  .scroll-indicator,
-  .hero-location-tag {
-    display: none !important;
-  }
-
-  /* CENTER CONTENT PROPERLY */
-  .hero-content {
+  /* RESET EVERYTHING */
+  .hero,
+  .hero-content,
+  .hero-monogram-bg {
     position: relative !important;
     transform: none !important;
-    text-align: center;
-    margin-top: 0;
   }
 
-  /* FIX TOP TEXT (THIS WAS OFFSET) */
-  .hero-eyebrow {
-    position: relative !important;
-    left: auto !important;
-    transform: none !important;
-    margin-bottom: 20px !important;
-    font-size: 9px !important;
-    letter-spacing: 0.25em !important;
-    text-align: center;
-  }
-
-  /* KEEP CIRCLE CENTERED */
-  .hero-monogram-bg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-monogram-img {
-    width: 85vw !important;
-    max-width: 360px !important;
-    opacity: 0.25;
-  }
-
-  /* LOGO CENTER */
-  .hero-logo-wrap {
-    margin-bottom: 28px !important;
-  }
-
-  .hero-logo {
-    width: 75% !important;
-    max-width: 260px !important;
-    margin: 0 auto;
-  }
-
-  /* BUTTONS CENTERED */
-  .hero-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-top: 20px !important;
-  }
-
-  .hero-btn {
-    width: 220px;
-    padding: 14px;
-  }
-
-}
-
-/* ============================================================
-   LYNARCH — TRUE CENTER ALIGN (LOGO ↔ CIRCLE)
-   ============================================================ */
-
-@media (max-width: 768px) {
-
-  /* MAKE HERO A REFERENCE */
-  .hero {
-    position: relative;
-  }
-
-  /* CENTER THE CIRCLE EXACTLY */
-  .hero-monogram-bg {
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* FORCE LOGO TO SAME CENTER */
-  .hero-content {
-    position: absolute !important;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    width: 100%;
-    text-align: center;
-  }
-
-}
-
-   @media (max-width: 768px) {
-
-  /* HERO CLEAN RESET */
+  /* HERO STRUCTURE */
   .hero {
     height: auto !important;
-    min-height: auto !important;
     padding: 100px 20px 60px !important;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* CENTER BLOCK */
-  .hero-center {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* REMOVE SIDE CLUTTER */
+  .hero-side,
+  .scroll-indicator,
+  .hero-location-tag {
+    display: none !important;
   }
 
-  /* CIRCLE */
-  .hero-monogram-bg {
-    position: relative !important;
-  }
-
-  .hero-monogram-img {
-    width: 280px !important;
-    opacity: 0.25;
-  }
-
-  /* LOGO ON TOP OF CIRCLE */
-  .hero-content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: none !important;
-  }
-
-  .hero-logo {
-    width: 70%;
-    max-width: 240px;
-  }
-
-  /* TEXT */
+  /* TOP TEXT */
   .hero-eyebrow {
     text-align: center;
     margin-bottom: 20px;
     font-size: 9px;
     letter-spacing: 0.25em;
+  }
+
+  /* CIRCLE */
+  .hero-monogram-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-monogram-img {
+    width: 260px;
+    opacity: 0.25;
+  }
+
+  /* LOGO (CENTERED NATURALLY) */
+  .hero-content {
+    margin-top: -160px; /* THIS pulls logo into circle */
+    text-align: center;
+  }
+
+  .hero-logo {
+    width: 70%;
+    max-width: 240px;
   }
 
   /* BUTTONS */
@@ -1599,13 +1495,6 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
     flex-direction: column;
     align-items: center;
     gap: 12px;
-  }
-
-  /* REMOVE SIDE ELEMENTS */
-  .hero-side,
-  .scroll-indicator,
-  .hero-location-tag {
-    display: none !important;
   }
 
 }
