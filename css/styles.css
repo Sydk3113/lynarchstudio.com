@@ -1427,38 +1427,27 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
 }
 @media (max-width: 768px) {
 
-@media (max-width: 768px) {
-
-  /* stop layout breaking */
   .hero {
-    height: auto !important;
-    padding: 100px 20px 60px !important;
+    position: relative;
+    height: 100vh;
   }
 
-  /* keep circle centered */
+  /* CIRCLE */
   .hero-monogram-bg {
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  .hero-monogram-img {
-    width: 260px;
-    opacity: 0.25;
-  }
-
-  /* KEEP LOGO NORMAL (no absolute, no tricks) */
-  .hero-content {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  /* buttons clean */
-  .hero-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-top: 20px;
+  /* LOGO — FORCE CENTER TO SAME POINT */
+  .hero-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 280px;
   }
 
 }
