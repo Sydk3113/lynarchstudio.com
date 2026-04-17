@@ -1427,145 +1427,72 @@ section { padding: clamp(60px, 7vw, 100px) var(--side-pad); }
 }
 @media (max-width: 768px) {
 
-  /* center everything */
-  body {
-    text-align: center;
+/* ============================================================
+   CLEAN MOBILE FIX — LYNARCH HERO (FINAL)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* NAV */
+  .nav {
+    height: 80px;
   }
 
-  /* FIX BIG CIRCLE */
-  .hero-circle {
-    width: 280px !important;
-    height: 280px !important;
-    margin: 0 auto;
+  .nav-logo-img {
+    height: 70px;
   }
 
-  /* FIX LOGO SIZE */
-  .hero-logo {
-    width: 80% !important;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  /* FIX TITLE TEXT */
-  h1 {
-    font-size: 28px !important;
-    line-height: 1.2;
-  }
-
-  /* FIX SUBTEXT */
-  .hero-subtext {
-    font-size: 12px;
-    padding: 0 10px;
-  }
-
-  /* FIX BUTTONS */
-  .buttons {
+  /* HERO */
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 60px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* REMOVE SIDE CLUTTER */
+  .hero-side,
+  .hero-location-tag,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  /* MONOGRAM SCALE */
+  .hero-monogram-img {
+    width: 85vw;
+    max-width: 420px;
+    opacity: 0.25;
+  }
+
+  /* TEXT */
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    margin-bottom: 20px;
+  }
+
+  /* LOGO */
+  .hero-logo {
+    width: 85%;
+    max-width: 320px;
+  }
+
+  .hero-logo-wrap {
+    margin-bottom: 32px;
+  }
+
+  /* BUTTONS */
+  .hero-actions {
     flex-direction: column;
     gap: 12px;
-    width: 90%;
-    margin: 20px auto;
+    margin-top: 20px;
   }
 
-  .buttons a {
-    width: 100%;
+  .hero-btn {
+    width: 220px;
     padding: 14px;
   }
 
-  /* HIDE NAV (temporary fix) */
-  nav {
-    display: none;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  * {
-    max-width: 100% !important;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-
-  /* BREAK ABSOLUTE POSITIONING */
-  .hero,
-  .hero-content,
-  .hero-circle,
-  .hero-logo {
-    position: relative !important;
-    transform: none !important;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  .hero-content {
-    position: static !important;
-    transform: none !important;
-    top: auto !important;
-    left: auto !important;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  .hero {
-    height: auto !important;
-    padding: 80px 20px;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  h1, h2, p {
-    word-break: break-word;
-  }
-
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-circle {
-    width: 240px !important;
-    height: 240px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-logo {
-    width: 75% !important;
-    max-width: 260px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-subtext {
-    letter-spacing: 2px !important;
-    font-size: 11px;
-    line-height: 1.4;
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .buttons {
-    margin-top: 20px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: auto !important;
-  }
 }
