@@ -335,10 +335,18 @@ legend { font-size: 14px; margin-bottom: 15px; }
   .rail-footer p { font-size: 9px; }
   .rail-track { min-width: 25px; }
   .rail-buttons { gap: 5px; }
-  .detail-story { min-height: 530px; height: 80svh; max-height: 800px; }
-  .detail-photo img { object-position: 66% center; }
-  .detail-caption { padding-top: 50px; }
-  .detail-caption h2 { margin-block: 80px 30px; }
+  .detail-story {
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    background: var(--ink);
+  }
+  .detail-story::after { display: none; }
+  .detail-photo { position: static; transform: none; }
+  .detail-photo img { display: block; height: auto; }
+  .detail-caption { padding-block: 32px 40px; }
+  .detail-caption h2 { margin-block: 18px 22px; }
+  .detail-caption .text-link { margin-top: 0; }
   .approach { padding-block: 60px; }
   .section-note { font-size: 12px; }
   .approach-grid { grid-template-columns: 1fr; gap: 35px; }
@@ -414,3 +422,5 @@ legend { font-size: 14px; margin-bottom: 15px; }
 
 .arrow-ne { display: inline-flex; align-items: center; justify-content: center; }
 .arrow-ne::before { content: ""; display: block; width: .82em; height: .82em; background: currentColor; flex: none; mask: url("arrow-ne.svg") center / contain no-repeat; }
+
+.arrow-se::before { transform: rotate(90deg); }
