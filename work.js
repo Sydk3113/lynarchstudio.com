@@ -7,7 +7,7 @@ function renderCollection(){
   const card=document.createElement('a');card.href=window.projectHref(project);card.className='archive-card depth-card';
   const media=document.createElement('span');media.className='archive-image';media.append(window.projectPicture(project,'(max-width: 680px) 94vw, 47vw'));
   const name=document.createElement('h2');name.textContent=project.shortName;
-  const meta=document.createElement('p');meta.textContent=project.category+' · '+project.location;
+  const meta=window.projectMetadata(project);
   const arrow=document.createElement('span');arrow.className='archive-arrow';arrow.classList.add('arrow-ne');arrow.setAttribute('aria-hidden','true');
   card.append(media,name,meta,arrow);return card;
  }));

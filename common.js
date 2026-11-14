@@ -7,6 +7,7 @@ siteHeader.innerHTML = `
  <a class="brand" href="index.html" aria-label="Lynarch Studio home"><img src="brand.svg" alt="Lynarch Studio" width="1104" height="480"></a>
  <p class="header-location">Architecture & interiors<br>Chennai, India</p>
  <nav class="header-links" aria-label="Primary"><a href="work.html">Work</a><a href="${homeLink}#studio">Studio</a></nav>
+ <button type="button" class="header-cta" data-enquiry aria-haspopup="dialog">Start a Project</button>
  <button type="button" class="menu-toggle" aria-label="Open menu" aria-haspopup="dialog"><span>Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
 </header><div class="page-progress" aria-hidden="true"></div>`;
 siteFooter.innerHTML = `
@@ -168,10 +169,14 @@ window.imageSources = src => {
 };
 window.projectPicture = (project, sizes='(max-width: 680px) 90vw, 55vw') => {
  const image = document.createElement('img');
- image.src = project.cover;
  image.srcset = window.imageSources(project.cover);
  image.sizes = sizes; image.alt = project.shortName + ' — ' + project.category.toLowerCase();
- image.loading = 'lazy'; image.style.objectPosition = project.position;
+ const dimensions = window.projectMedia[project.cover];
+ image.width = dimensions.width;
+ image.height = dimensions.height;
+ image.decoding = 'async';
+ image.loading = 'lazy';
+ image.src = project.cover; image.style.objectPosition = project.position;
  return image;
 };
 window.enableCardDepth = container => {
@@ -185,4 +190,27 @@ window.enableCardDepth = container => {
   });
   card.addEventListener('pointerleave',()=>{card.style.removeProperty('--rotate-x');card.style.removeProperty('--rotate-y');});
  });
+};
+
+window.projectMetadata = (project, className = 'project-meta') => {
+ const list = document.createElement('dl');
+ list.className = className;
+ const fields = [
+  ['Built area', project.builtArea],
+  ['Scope', project.scope],
+  ['Location', project.location === project.name ? null : project.location],
+  ['Year', project.year],
+  ['Status', project.status === 'Ongoing on site' ? project.status : null]
+ ];
+ for (const [label, value] of fields) {
+  if (value == null || String(value).trim() === '') continue;
+  const item = document.createElement('div');
+  const term = document.createElement('dt');
+  const detail = document.createElement('dd');
+  term.textContent = label;
+  detail.textContent = value;
+  item.append(term, detail);
+  list.append(item);
+ }
+ return list;
 };

@@ -23,7 +23,7 @@ selected.forEach(id=>{
  card.href=window.projectHref(project);card.className='rail-card depth-card';
  const media=document.createElement('span');media.className='rail-image';media.append(window.projectPicture(project));
  const title=document.createElement('h3');title.textContent=project.shortName;
- const meta=document.createElement('p');meta.textContent=project.category+' / '+project.location;
+ const meta=window.projectMetadata(project);
  const arrow=document.createElement('span');arrow.className='card-arrow';arrow.setAttribute('aria-hidden','true');arrow.classList.add('arrow-ne');
  card.append(media,title,meta,arrow);
  rail.append(card);
@@ -39,7 +39,7 @@ function updateRail(){
 }
 function moveRail(direction){
  const card=rail.querySelector('.rail-card');
- rail.scrollBy({left:direction*(card.getBoundingClientRect().width+32),behavior:motionQuery.matches?'instant':'smooth'});
+ rail.scrollBy({left:direction*(card.getBoundingClientRect().width+parseFloat(getComputedStyle(rail).columnGap)),behavior:motionQuery.matches?'instant':'smooth'});
 }
 previous.addEventListener('click',()=>moveRail(-1));next.addEventListener('click',()=>moveRail(1));
 rail.addEventListener('scroll',updateRail,{passive:true});
@@ -60,8 +60,29 @@ details.forEach(detail=>{
   if(!detail.open) return;
   details.forEach(other=>{if(other!==detail) other.open=false;});
   const [src,alt,caption]=stages[Number(detail.dataset.process)];
-  const image=document.querySelector('#process-photo');image.src=src;image.alt=alt;
+  const image=document.querySelector('#process-photo');
+  const dimensions = window.projectMedia[src];
+  image.srcset = window.imageSources(src);
+  image.width = dimensions.width;
+  image.height = dimensions.height;
+  image.src = src;
+  image.alt = alt;
   document.querySelector('#process-caption').textContent=caption;
   if(!motionQuery.matches) image.animate([{opacity:.25,transform:'scale(1.035)'},{opacity:1,transform:'scale(1)'}],{duration:550,easing:'ease-out'});
  });
 });
+
+const testimonialSlot = document.querySelector('#client-testimonials');
+for (const testimonial of window.clientTestimonials) {
+ if (!testimonial.quote || !testimonial.attribution) continue;
+ const figure = document.createElement('figure');
+ const quote = document.createElement('blockquote');
+ const text = document.createElement('p');
+ text.textContent = testimonial.quote;
+ quote.append(text);
+ const attribution = document.createElement('figcaption');
+ attribution.textContent = testimonial.attribution;
+ figure.append(quote, attribution);
+ testimonialSlot.append(figure);
+}
+testimonialSlot.hidden = !testimonialSlot.childElementCount;

@@ -1,9 +1,13 @@
+// Optional project fields: builtArea (with units), year, and artifacts
+// [{ src, srcset, width, height, alt, caption }] for approved process images.
+// Each approved client quote takes { quote, attribution }.
+window.clientTestimonials = [];
 window.projects = [
   {
     "id": "voora-villa",
     "name": "Voora Villa 7C",
     "shortName": "Voora Villa 7C",
-    "location": "Voora Villa 7C",
+    "location": "Akkarai, Chennai",
     "category": "Interiors",
     "title": "A home with many moods.",
     "intro": "A residential interior proposal bringing together warm shared spaces and individually styled bedrooms across two floors.",
@@ -11,7 +15,7 @@ window.projects = [
     "body": "Timber, textured surfaces and layered lighting connect the living and dining rooms, kitchen and quieter garden spaces. Upstairs, distinct bedroom palettes bring personal character to the home. This selection combines the ground-floor and first-floor design studies, including alternative room concepts.",
     "type": "Interiors",
     "scope": "Residential interior proposal",
-    "status": "Design proposal",
+    "status": "Ongoing on site",
     "description": "A residential interior proposal bringing together warm shared spaces and individually styled bedrooms across two floors.",
     "images": [
       "media/voora-villa/gf-12.jpg",
@@ -38,6 +42,7 @@ window.projects = [
   },
   {
     "id": "don-bosco-villa",
+    "executionPhotos": [{"src": "media/don-bosco-villa/execution-1.webp", "caption": "Front elevation during masonry works"}, {"src": "media/don-bosco-villa/execution-2.webp", "caption": "Side view of concrete framing and brickwork"}],
     "name": "Don Bosco Villa",
     "shortName": "Don Bosco Villa",
     "location": "Ambattur, Chennai",
@@ -48,7 +53,7 @@ window.projects = [
     "body": "An ivory facade, layered cornices, fluted surfaces and geometric wall panels give the villa a restrained classical character. Dark window frames and warm architectural lighting add contrast, tracing the facade as day gives way to night.",
     "type": "Architecture",
     "scope": "Exterior design proposal",
-    "status": "Design proposal",
+    "status": "Ongoing on site",
     "description": "An exterior design proposal for a villa in Ambattur, explored through daylight and evening views.",
     "images": [
       "media/don-bosco-villa/exterior-2.jpg",
@@ -63,6 +68,7 @@ window.projects = [
   },
   {
     "id": "dac-704",
+    "executionPhotos": [{"src": "media/dac-704/execution-1.webp", "caption": "Pendant lighting and joinery installation"}, {"src": "media/dac-704/execution-2.webp", "caption": "Ceiling and media wall installation"}],
     "name": "DAC 704 — DAC Prathyangira",
     "shortName": "DAC 704",
     "location": "DAC Prathyangira",
@@ -73,7 +79,7 @@ window.projects = [
     "body": "A neutral palette, timber finishes and textured surfaces connect the living spaces and bedrooms. Integrated storage, soft lighting and considered bedroom detailing create a calm domestic setting, with a balcony offering a place to pause.",
     "type": "Interiors",
     "scope": "Residential interior proposal",
-    "status": "Design proposal",
+    "status": "Ongoing on site",
     "description": "A contemporary three-bedroom apartment interior proposed for DAC Prathyangira.",
     "images": [
       "media/dac-704/interior-6.jpg",
@@ -125,7 +131,7 @@ window.projects = [
       "3",
       "7"
     ],
-    "status": "Design study"
+    "status": "Ongoing on site"
   },
   {
     "id": "studio-dvour",
@@ -286,6 +292,7 @@ window.projects = [
   },
   {
     "id": "gift-kiosk",
+    "executionPhotos": [{"src": "media/gift-kiosk/execution-1.webp", "caption": "Illuminated shopfront and display shelving"}],
     "name": "Unique Gift Kiosk",
     "location": "Chennai Airport",
     "type": "Interior Design",
@@ -356,8 +363,9 @@ window.projects = [
   },
   {
     "id": "ecr-pallavaram",
+    "executionPhotos": [{"src": "media/ecr-pallavaram/execution-1.webp", "caption": "Dining lighting and wall panelling"}, {"src": "media/ecr-pallavaram/execution-2.webp", "caption": "Living room installation in progress"}, {"src": "media/ecr-pallavaram/execution-3.webp", "caption": "Living room joinery and moulding"}, {"src": "media/ecr-pallavaram/execution-4.webp", "caption": "Vanity lighting and finishes"}],
     "name": "Palavakkam Residence",
-    "location": "Chennai",
+    "location": "Palavakkam, Chennai",
     "type": "Interior Design",
     "scope": "Residential design",
     "description": "Residential interiors in Palavakkam, Chennai.",
@@ -373,7 +381,7 @@ window.projects = [
     "cover": "media/ecr-pallavaram/cover.jpg",
     "title": "A place to come home to.",
     "intro": "Residential interiors for a home in Palavakkam, Chennai.",
-    "status": "Residential design",
+    "status": "Ongoing on site",
     "position": "50% 50%"
   },
   {

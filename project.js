@@ -21,14 +21,14 @@ if (!project) {
   caption.className = 'project-hero-caption section-pad';
   const label = document.createElement('p');
   label.className = 'eyebrow';
-  label.textContent = project.category + ' · ' + project.location;
+  label.textContent = project.category;
   const heading = document.createElement('h1');
   heading.textContent = project.shortName;
   const link = document.createElement('a');
   link.className = 'project-scroll';
   link.href = '#project-overview';
   link.innerHTML = 'Explore the project <span class="circle-arrow" aria-hidden="true">↓</span>';
-  caption.append(label, heading, link);
+  caption.append(label, heading, window.projectMetadata(project, 'project-meta project-hero-meta'), link);
   hero.append(heroOverlay, caption);
   content.append(hero);
 
@@ -98,6 +98,36 @@ if (!project) {
     content.append(film);
   }
 
+  const artifacts = project.artifacts ?? [];
+  if (artifacts.length) {
+    const process = document.createElement('section');
+    process.className = 'process-artifacts section-pad';
+    process.setAttribute('aria-labelledby', 'process-artifacts-title');
+    const title = document.createElement('h2');
+    title.id = 'process-artifacts-title';
+    title.textContent = 'Process & Details';
+    const grid = document.createElement('div');
+    grid.className = 'artifact-grid';
+    for (const artifact of artifacts) {
+      const figure = document.createElement('figure');
+      const image = document.createElement('img');
+      image.alt = artifact.alt;
+      image.width = artifact.width;
+      image.height = artifact.height;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.sizes = '(max-width: 680px) 90vw, 44vw';
+      if (artifact.srcset) image.srcset = artifact.srcset;
+      image.src = artifact.src;
+      const caption = document.createElement('figcaption');
+      caption.textContent = artifact.caption;
+      figure.append(image, caption);
+      grid.append(figure);
+    }
+    process.append(title, grid);
+    content.append(process);
+  }
+
   const gallery = document.createElement('section');
   gallery.className = 'story-gallery section-pad';
   gallery.setAttribute('aria-label', project.shortName + ' image gallery');
@@ -108,12 +138,13 @@ if (!project) {
     button.type = 'button';
     button.setAttribute('aria-label', 'Enlarge ' + project.shortName + ' image ' + (index + 1));
     const picture = document.createElement('img');
-    picture.src = src;
     picture.srcset = window.imageSources(src);
     picture.width = window.projectMedia[src].width;
     picture.height = window.projectMedia[src].height;
     picture.sizes = index % 3 === 0 ? '92vw' : '(max-width: 680px) 92vw, 45vw';
     picture.loading = 'lazy';
+    picture.decoding = 'async';
+    picture.src = src;
     picture.alt = project.shortName + ' · ' + project.category.toLowerCase() + ' view ' + (index + 1);
     const expand = document.createElement('span');
     expand.className = 'expand-image';
@@ -125,6 +156,35 @@ if (!project) {
     gallery.append(figure);
   });
   content.append(gallery);
+
+  if (project.executionPhotos?.length) {
+    const section = document.createElement('section');
+    section.className = 'execution-section section-pad';
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'Execution photos · ' + project.executionPhotos.length;
+    const grid = document.createElement('div');
+    grid.className = 'artifact-grid execution-grid';
+    details.append(summary, grid);
+    // Insert the images on first expansion, so closed galleries use no photo data.
+    details.addEventListener('toggle', () => {
+      if (!details.open || grid.childElementCount) return;
+      for (const photo of project.executionPhotos) {
+        const figure = document.createElement('figure');
+        const image = document.createElement('img');
+        image.alt = photo.caption;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.src = photo.src;
+        const caption = document.createElement('figcaption');
+        caption.textContent = photo.caption;
+        figure.append(image, caption);
+        grid.append(figure);
+      }
+    });
+    section.append(details);
+    content.append(section);
+  }
   const nextLink = document.createElement('a');
   nextLink.className = 'next-project';
   nextLink.href = window.projectHref(next);
