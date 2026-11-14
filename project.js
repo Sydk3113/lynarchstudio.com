@@ -77,6 +77,25 @@ if (!project) {
   overview.append(info, narrative);
   content.append(overview);
 
+  if (project.id === 'casa-aurum') {
+    const film = document.createElement('section');
+    film.className = 'project-film section-pad';
+    film.setAttribute('aria-labelledby', 'project-film-title');
+    film.innerHTML = `
+      <div>
+        <p class="eyebrow">Casa Aurum</p>
+        <h2 id="project-film-title">The kitchen in use.</h2>
+        <p>See the pull-down pantry and kitchen details in motion.</p>
+      </div>
+      <video controls playsinline preload="none" width="1080" height="1920"
+        poster="media/casa-aurum/kitchen-film-poster.jpg"
+        aria-label="Casa Aurum kitchen film">
+        <source src="media/casa-aurum/kitchen-film.mp4" type="video/mp4">
+        <a href="media/casa-aurum/kitchen-film.mp4">Watch the kitchen film</a>
+      </video>`;
+    content.append(film);
+  }
+
   const gallery = document.createElement('section');
   gallery.className = 'story-gallery section-pad';
   gallery.setAttribute('aria-label', project.shortName + ' image gallery');
