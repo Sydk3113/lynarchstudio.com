@@ -12,23 +12,23 @@ siteHeader.innerHTML = `
 siteFooter.innerHTML = `
 <footer class="site-footer section-pad" id="contact">
  <div class="footer-top"><p class="eyebrow">Begin a conversation</p><p>New build, new beginning,<br>or a fresh perspective.</p></div>
- <button class="contact-heading" data-enquiry><span>Have a space<br><em>in mind?</em></span><span class="contact-arrow" aria-hidden="true">↗</span></button>
+ <button class="contact-heading" data-enquiry><span>Have a space<br><em>in mind?</em></span><span class="contact-arrow arrow-ne" aria-hidden="true"></span></button>
  <div class="footer-grid">
   <a class="footer-brand" href="index.html"><img src="brand.svg" alt="Lynarch Studio" width="1104" height="480"></a>
   <div><p class="eyebrow">Find us</p><address>Second Floor, SIET Admin Building<br>54 KB Dasan Road, Teynampet<br>Chennai 600018</address></div>
-  <div><p class="eyebrow">Say hello</p><a href="mailto:info@lynarchstudio.com">info@lynarchstudio.com</a><br><a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a><br><a href="tel:+919941437908">+91 99414 37908</a><br><a href="tel:+919789093726">+91 97890 93726</a></div>
+  <div><p class="eyebrow">Say hello</p><a href="mailto:info@lynarchstudio.com">info@lynarchstudio.com</a><br><a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span class="arrow-ne" aria-hidden="true"></span></a><br><a href="tel:+919941437908">+91 99414 37908</a><br><a href="tel:+919789093726">+91 97890 93726</a></div>
  </div>
- <div class="footer-base"><span>© ${new Date().getFullYear()} Lynarch Studio</span><a href="https://www.instagram.com/lynarch.studio/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.linkedin.com/company/lynarch-studio" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a href="#top" data-top>Back to top ↑</a></div>
+ <div class="footer-base"><span>© ${new Date().getFullYear()} Lynarch Studio</span><a href="https://www.instagram.com/lynarch.studio/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow-ne" aria-hidden="true"></span></a><a href="https://www.linkedin.com/company/lynarch-studio" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arrow-ne" aria-hidden="true"></span></a><a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">WhatsApp <span class="arrow-ne" aria-hidden="true"></span></a><a href="#top" data-top>Back to top ↑</a></div>
 </footer>`;
 document.body.insertAdjacentHTML('beforeend', `
 <dialog class="menu-dialog" aria-label="Site menu">
  <div class="menu-heading"><a class="brand" href="index.html"><img src="brand.svg" alt="Lynarch Studio" width="1104" height="480"></a><button class="menu-close" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div>
  <div class="menu-layout">
   <nav class="menu-nav" aria-label="Explore Lynarch">
-   <a href="work.html" data-menu-photo="media/hobarts-school/2.jpg"><span>Our work</span><span>↗</span></a>
-   <a href="${homeLink}#studio" data-menu-photo="media/studio-dvour/13.jpg"><span>The studio</span><span>↗</span></a>
-   <a href="${homeLink}#approach" data-menu-photo="media/casa-aurum/cover.jpg"><span>Our approach</span><span>↗</span></a>
-   <button data-enquiry data-menu-photo="media/studio-dvour/3.jpg"><span>Let’s talk</span><span>↗</span></button>
+   <a href="work.html" data-menu-photo="media/hobarts-school/2.jpg"><span>Our work</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <a href="${homeLink}#studio" data-menu-photo="media/studio-dvour/13.jpg"><span>The studio</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <a href="${homeLink}#approach" data-menu-photo="media/casa-aurum/cover.jpg"><span>Our approach</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <button data-enquiry data-menu-photo="media/studio-dvour/3.jpg"><span>Let’s talk</span><span class="arrow-ne" aria-hidden="true"></span></button>
   </nav>
   <div class="menu-preview"><img src="media/hobarts-school/2-small.jpg" alt="" loading="lazy"><p>Architecture. Interiors. Execution.</p></div>
  </div><div class="menu-bottom"><span>Chennai, India</span><a href="mailto:info@lynarchstudio.com">info@lynarchstudio.com</a></div>
@@ -47,8 +47,8 @@ document.body.insertAdjacentHTML('beforeend', `
    <div class="form-row"><div><label class="field-label" for="brief-email">Your email</label><input id="brief-email" name="email" type="email" autocomplete="email" required></div><div><label class="field-label" for="brief-phone">Phone (optional)</label><input id="brief-phone" name="phone" type="tel" autocomplete="tel"></div></div>
    <label class="field-label" for="brief-message">What do you have in mind?</label><textarea id="brief-message" name="message" rows="3" required placeholder="The space, your ideas, and any timing you have in mind…"></textarea>
    <p class="form-note">Your enquiry is sent securely through Formspree to our studio.</p>
-   <div class="form-actions"><button id="brief-back" class="text-link" type="button">← Back</button><button class="solid-button" type="submit">Send enquiry <span>↗</span></button></div>
-   <p id="brief-status" role="status"></p><a id="brief-mail-link" hidden>Send by email instead ↗</a>
+   <div class="form-actions"><button id="brief-back" class="text-link" type="button">← Back</button><button class="solid-button" type="submit">Send enquiry <span class="arrow-ne" aria-hidden="true"></span></button></div>
+   <p id="brief-status" role="status"></p><a id="brief-mail-link" hidden>Send by email instead <span class="arrow-ne" aria-hidden="true"></span></a>
   </fieldset>
  </form>
 </dialog><div class="transition-screen" aria-hidden="true"><img src="brand.svg" alt=""></div>`);
@@ -117,7 +117,7 @@ enquiryForm.addEventListener('submit', async event => {
   fallback.hidden = false;
  } finally {
   clearTimeout(timeout); enquiryForm.dataset.sending = 'false';
-  button.disabled = false; button.innerHTML = 'Send enquiry <span>↗</span>';
+  button.disabled = false; button.innerHTML = 'Send enquiry <span class="arrow-ne" aria-hidden="true"></span>';
   document.querySelector('#brief-back').disabled = false;
  }
 });

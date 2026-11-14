@@ -8,7 +8,7 @@ function renderCollection(){
   const media=document.createElement('span');media.className='archive-image';media.append(window.projectPicture(project,'(max-width: 680px) 94vw, 47vw'));
   const name=document.createElement('h2');name.textContent=project.shortName;
   const meta=document.createElement('p');meta.textContent=project.category+' · '+project.location;
-  const arrow=document.createElement('span');arrow.className='archive-arrow';arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');
+  const arrow=document.createElement('span');arrow.className='archive-arrow';arrow.classList.add('arrow-ne');arrow.setAttribute('aria-hidden','true');
   card.append(media,name,meta,arrow);return card;
  }));
  document.querySelector('#project-count').textContent=matching.length+' '+(matching.length===1?'project':'projects');

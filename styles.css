@@ -411,3 +411,6 @@ legend { font-size: 14px; margin-bottom: 15px; }
 
 .intro-copy > p + p { margin-top: 20px; }
 .footer-base { gap: 20px; flex-wrap: wrap; }
+
+.arrow-ne { display: inline-flex; align-items: center; justify-content: center; }
+.arrow-ne::before { content: ""; display: block; width: .82em; height: .82em; background: currentColor; flex: none; mask: url("arrow-ne.svg") center / contain no-repeat; }

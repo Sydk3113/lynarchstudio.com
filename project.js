@@ -4,7 +4,7 @@ const content = document.querySelector('#project-content');
 
 if (!project) {
   document.body.classList.add('project-missing');
-  content.innerHTML = '<section class="missing-project section-pad"><p class="eyebrow">Lynarch Studio</p><h1>Find your<br>next perspective.</h1><p>This project link is unavailable.</p><a class="text-link" href="work.html">Explore all projects ↗</a></section>';
+  content.innerHTML = '<section class="missing-project section-pad"><p class="eyebrow">Lynarch Studio</p><h1>Find your<br>next perspective.</h1><p>This project link is unavailable.</p><a class="text-link" href="work.html">Explore all projects <span class="arrow-ne" aria-hidden="true"></span></a></section>';
 } else {
   document.title = project.shortName + ' — Lynarch Studio';
   document.querySelector('meta[name="description"]').content = project.intro;
@@ -96,7 +96,7 @@ if (!project) {
     picture.alt = project.shortName + ' · ' + project.category.toLowerCase() + ' view ' + (index + 1);
     const expand = document.createElement('span');
     expand.className = 'expand-image';
-    expand.textContent = '↗';
+    expand.classList.add('arrow-ne');
     expand.setAttribute('aria-hidden', 'true');
     button.append(picture, expand);
     button.addEventListener('click', () => openImage(index));
@@ -114,7 +114,7 @@ if (!project) {
   nextTitle.textContent = next.shortName;
   const arrow = document.createElement('span');
   arrow.className = 'circle-arrow';
-  arrow.textContent = '↗';
+  arrow.classList.add('arrow-ne');
   arrow.setAttribute('aria-hidden', 'true');
   nextCopy.append(nextTitle, arrow);
   nextLink.append(nextCopy);

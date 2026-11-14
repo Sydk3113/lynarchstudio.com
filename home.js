@@ -24,7 +24,7 @@ selected.forEach(id=>{
  const media=document.createElement('span');media.className='rail-image';media.append(window.projectPicture(project));
  const title=document.createElement('h3');title.textContent=project.shortName;
  const meta=document.createElement('p');meta.textContent=project.category+' / '+project.location;
- const arrow=document.createElement('span');arrow.className='card-arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';
+ const arrow=document.createElement('span');arrow.className='card-arrow';arrow.setAttribute('aria-hidden','true');arrow.classList.add('arrow-ne');
  card.append(media,title,meta,arrow);rail.append(card);
 });
 window.enableCardDepth(rail);
