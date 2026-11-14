@@ -7,25 +7,38 @@
 <meta name="description" content="A Chennai architecture and interiors practice led by Syed Kuraib and Amreen N. Explore homes, creative spaces and architectural studies.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
-<link rel="preload" as="image" href="media/hobarts-school/2.jpg" imagesrcset="media/hobarts-school/2-small.jpg 900w, media/hobarts-school/2.jpg 2000w" imagesizes="100vw">
-<script defer src="projects.js?v=9"></script><script defer src="common.js?v=9"></script><script defer src="home.js?v=9"></script>
+<link rel="stylesheet" href="styles.css?v=11">
+<link rel="preload" as="image" href="media/studio-dvour/13.jpg" imagesrcset="media/studio-dvour/13-small.jpg 900w, media/studio-dvour/13.jpg 2000w" imagesizes="100vw">
+<script defer src="projects.js?v=9"></script><script defer src="common.js?v=9"></script><script defer src="home.js?v=11"></script>
 <link rel="icon" type="image/png" sizes="128x128" href="favicon.png">
+<script>
+  if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    try {
+      if (!sessionStorage.getItem('lynarch-opening-seen')) {
+        sessionStorage.setItem('lynarch-opening-seen', 'true');
+        document.documentElement.classList.add('show-studio-opening');
+      }
+    } catch {
+      // The homepage remains available when session storage is disabled.
+    }
+  }
+</script>
 </head>
 <body data-page="home">
+<div class="studio-opening" aria-hidden="true"><img src="brand.svg" alt="" width="1104" height="480"></div>
 <a class="skip-link" href="#main">Skip to content</a><div id="site-header"></div>
 <main id="main">
 <section class="hero" aria-labelledby="hero-heading">
  <div class="hero-images" id="hero-images">
-  <img class="hero-image active" src="media/hobarts-school/2.jpg" srcset="media/hobarts-school/2-small.jpg 900w, media/hobarts-school/2.jpg 2000w" sizes="100vw" alt="Sunlight filtering through the brick screens of the Hobarts School design" fetchpriority="high" width="2000" height="1125">
-  <img class="hero-image" data-src="media/studio-dvour/13.jpg" alt="Warm timber desk, art and a lamp at Studio D’vour">
+  <img class="hero-image active studio-hero" src="media/studio-dvour/13.jpg" srcset="media/studio-dvour/13-small.jpg 900w, media/studio-dvour/13.jpg 2000w" sizes="100vw" alt="Warm timber desk, art and a lamp at Studio D’vour" fetchpriority="high" width="2000" height="1490">
+  <img class="hero-image" data-src="media/hobarts-school/2.jpg" alt="Sunlight filtering through brick screens at Hobarts School">
   <img class="hero-image" data-src="media/casa-aurum/cover.jpg" alt="The warm-toned kitchen at Casa Aurum">
  </div><div class="hero-shade"></div>
  <div class="hero-intro"><p class="eyebrow"><span class="status-dot"></span> Architecture · Interiors · Execution</p><h1 id="hero-heading"><span>A sense</span><span>of <em>place.</em></span></h1></div>
  <div class="hero-bottom">
   <a href="#studio" class="scroll-cue"><span class="circle-arrow">↓</span><span>Discover the studio</span></a>
-  <a id="hero-project" href="project.html?id=hobarts-school" class="hero-project"><span><small id="hero-project-type">Architecture study · Chennai</small><strong id="hero-project-name">Hobarts School</strong></span><span class="circle-arrow arrow-ne" aria-hidden="true"></span></a>
-  <div class="hero-select" role="group" aria-label="Featured project"><button type="button" data-slide="0" aria-label="Show Hobarts School" aria-pressed="true"><span></span></button><button type="button" data-slide="1" aria-label="Show Studio D’vour" aria-pressed="false"><span></span></button><button type="button" data-slide="2" aria-label="Show Casa Aurum" aria-pressed="false"><span></span></button></div>
+  <a id="hero-project" href="project.html?id=studio-dvour" class="hero-project"><span><small id="hero-project-type">Built interior · Alwarpet, Chennai</small><strong id="hero-project-name">Studio D’vour</strong></span><span class="circle-arrow arrow-ne" aria-hidden="true"></span></a>
+  <div class="hero-select" role="group" aria-label="Featured project"><button type="button" data-slide="0" aria-label="Show Studio D’vour" aria-pressed="true"><span></span></button><button type="button" data-slide="1" aria-label="Show Hobarts School" aria-pressed="false"><span></span></button><button type="button" data-slide="2" aria-label="Show Casa Aurum" aria-pressed="false"><span></span></button></div>
  </div>
 </section>
 <section class="studio-intro section-pad" id="studio">

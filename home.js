@@ -1,4 +1,4 @@
-const heroProjects = ['hobarts-school','studio-dvour','casa-aurum'].map(id=>window.projects.find(project=>project.id===id));
+const heroProjects = ['studio-dvour','hobarts-school','casa-aurum'].map(id=>window.projects.find(project=>project.id===id));
 const heroImages = document.querySelectorAll('.hero-image');
 let activeHero = 0;
 document.querySelectorAll('[data-slide]').forEach(button => {

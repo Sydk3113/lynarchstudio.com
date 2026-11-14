@@ -424,3 +424,33 @@ legend { font-size: 14px; margin-bottom: 15px; }
 .arrow-ne::before { content: ""; display: block; width: .82em; height: .82em; background: currentColor; flex: none; mask: url("arrow-ne.svg") center / contain no-repeat; }
 
 .arrow-se::before { transform: rotate(90deg); }
+
+.studio-opening { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .show-studio-opening .studio-opening {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: grid;
+    place-items: center;
+    background: var(--ink);
+    pointer-events: none;
+    animation: studio-opening-exit 1.55s var(--ease) both;
+  }
+  .studio-opening img {
+    width: clamp(155px, 34vw, 320px);
+    height: auto;
+    filter: brightness(0) invert(1);
+    animation: studio-opening-logo .55s ease-out both;
+  }
+}
+@keyframes studio-opening-logo {
+  from { opacity: 0; transform: translateY(8px); }
+}
+@keyframes studio-opening-exit {
+  0%, 60% { transform: translateY(0); visibility: visible; }
+  100% { transform: translateY(-100%); visibility: hidden; }
+}
+@media (max-width: 680px) {
+  .hero-image.studio-hero { object-position: 65% center; }
+}
