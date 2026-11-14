@@ -80,18 +80,20 @@ if (!project) {
   if (project.id === 'casa-aurum') {
     const film = document.createElement('section');
     film.className = 'project-film section-pad';
+    film.id = 'project-film';
     film.setAttribute('aria-labelledby', 'project-film-title');
     film.innerHTML = `
       <div>
         <p class="eyebrow">Casa Aurum</p>
-        <h2 id="project-film-title">The kitchen in use.</h2>
-        <p>See the pull-down pantry and kitchen details in motion.</p>
+        <h2 id="project-film-title">Made for<br><em>everyday life.</em></h2>
+        <p>A morning ritual. A place for everything. Step inside the kitchen at Casa Aurum.</p>
+        <p class="film-duration">A short film · 24 seconds · Sound available</p>
       </div>
-      <video controls playsinline preload="none" width="1080" height="1920"
-        poster="media/casa-aurum/kitchen-film-poster.jpg"
+      <video controls playsinline preload="none" width="1080" height="1152"
+        poster="media/casa-aurum/kitchen-framed-poster.jpg"
         aria-label="Casa Aurum kitchen film">
-        <source src="media/casa-aurum/kitchen-film.mp4" type="video/mp4">
-        <a href="media/casa-aurum/kitchen-film.mp4">Watch the kitchen film</a>
+        <source src="media/casa-aurum/kitchen-film-framed.mp4" type="video/mp4">
+        <a href="media/casa-aurum/kitchen-film-framed.mp4">Watch the kitchen film</a>
       </video>`;
     content.append(film);
   }

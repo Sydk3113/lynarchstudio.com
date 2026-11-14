@@ -15,6 +15,61 @@ document.querySelectorAll('[data-slide]').forEach(button => {
   document.querySelectorAll('[data-slide]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
  });
 });
+// The homepage preview stays silent; the project page has the full film and audio.
+const homeFilm = document.querySelector('#home-film');
+const filmToggle = document.querySelector('#home-film-toggle');
+let filmInView = false;
+let filmUserPaused = false;
+let filmUserStarted = false;
+const filmConnection = navigator.connection;
+function filmCanAutoPlay() {
+ return !motionQuery.matches && !filmConnection?.saveData;
+}
+function syncFilmButton() {
+ const playing = !homeFilm.paused;
+ filmToggle.classList.toggle('is-playing', playing);
+ filmToggle.setAttribute('aria-label', (playing ? 'Pause' : 'Play') + ' Casa Aurum preview');
+ document.querySelector('#home-film-state').textContent = playing ? 'Pause' : 'Play';
+}
+function playHomeFilm() {
+ const source = homeFilm.querySelector('source');
+ if (!source.hasAttribute('src')) {
+  source.src = source.dataset.src;
+  homeFilm.load();
+ }
+ homeFilm.play().catch(syncFilmButton);
+}
+function updateFilmPlayback() {
+ if (document.hidden || !filmInView || filmUserPaused) homeFilm.pause();
+ else if (filmUserStarted || filmCanAutoPlay()) playHomeFilm();
+ else homeFilm.pause();
+}
+filmToggle.hidden = false;
+filmToggle.addEventListener('click', () => {
+ if (homeFilm.paused) {
+  filmUserPaused = false;
+  filmUserStarted = true;
+  playHomeFilm();
+ } else {
+  filmUserPaused = true;
+  homeFilm.pause();
+ }
+});
+homeFilm.addEventListener('play', syncFilmButton);
+homeFilm.addEventListener('pause', syncFilmButton);
+homeFilm.addEventListener('error', () => {
+ homeFilm.pause();
+ filmToggle.hidden = true;
+});
+homeFilm.querySelector('source').addEventListener('error', () => { filmToggle.hidden = true; });
+new IntersectionObserver(entries => {
+ filmInView = entries[0].isIntersecting;
+ updateFilmPlayback();
+}, {threshold: .15}).observe(homeFilm);
+document.addEventListener('visibilitychange', updateFilmPlayback);
+motionQuery.addEventListener('change', () => { filmUserStarted = false; updateFilmPlayback(); });
+filmConnection?.addEventListener('change', updateFilmPlayback);
+
 const selected=['voora-villa','don-bosco-villa','dac-704','studio-dvour','hobarts-school','prestige-bella','casa-aurum'];
 const rail=document.querySelector('#work-rail');
 selected.forEach(id=>{

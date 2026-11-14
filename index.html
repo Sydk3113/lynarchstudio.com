@@ -7,9 +7,9 @@
 <meta name="description" content="A Chennai architecture and interiors practice led by Syed Kuraib and Amreen N. Explore homes, creative spaces and architectural studies.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=13">
 <link rel="preload" as="image" href="media/studio-dvour/13.jpg" imagesrcset="media/studio-dvour/13-small.jpg 900w, media/studio-dvour/13.jpg 2000w" imagesizes="100vw">
-<script defer src="projects.js?v=9"></script><script defer src="common.js?v=9"></script><script defer src="home.js?v=11"></script>
+<script defer src="projects.js?v=9"></script><script defer src="common.js?v=9"></script><script defer src="home.js?v=13"></script>
 <link rel="icon" type="image/png" sizes="128x128" href="favicon.png">
 <script>
   if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -28,13 +28,23 @@
 <div class="studio-opening" aria-hidden="true"><img src="brand.svg" alt="" width="1104" height="480"></div>
 <a class="skip-link" href="#main">Skip to content</a><div id="site-header"></div>
 <main id="main">
-<section class="hero" aria-labelledby="hero-heading">
+<section class="hero hero-with-film" aria-labelledby="hero-heading">
  <div class="hero-images" id="hero-images">
   <img class="hero-image active studio-hero" src="media/studio-dvour/13.jpg" srcset="media/studio-dvour/13-small.jpg 900w, media/studio-dvour/13.jpg 2000w" sizes="100vw" alt="Warm timber desk, art and a lamp at Studio D’vour" fetchpriority="high" width="2000" height="1490">
   <img class="hero-image" data-src="media/hobarts-school/2.jpg" alt="Sunlight filtering through brick screens at Hobarts School">
   <img class="hero-image" data-src="media/casa-aurum/cover.jpg" alt="The warm-toned kitchen at Casa Aurum">
  </div><div class="hero-shade"></div>
  <div class="hero-intro"><p class="eyebrow"><span class="status-dot"></span> Architecture · Interiors · Execution</p><h1 id="hero-heading"><span>A sense</span><span>of <em>place.</em></span></h1></div>
+ <aside class="hero-film" aria-label="Casa Aurum in motion">
+  <p class="eyebrow film-kicker">A glimpse of everyday life</p>
+  <div class="hero-film-frame">
+   <video id="home-film" muted loop playsinline preload="none" width="720" height="768" poster="media/casa-aurum/kitchen-framed-poster.jpg" aria-label="Silent preview of the Casa Aurum kitchen">
+    <source data-src="media/casa-aurum/kitchen-preview.mp4" type="video/mp4">
+   </video>
+   <button type="button" id="home-film-toggle" class="film-toggle" aria-label="Play Casa Aurum preview" hidden><span class="film-play-icon" aria-hidden="true"></span><span id="home-film-state">Play</span></button>
+  </div>
+  <a class="hero-film-caption" href="project.html?id=casa-aurum#project-film"><span><strong>Casa Aurum</strong><small>Watch the full film · 24 sec</small></span><span class="circle-arrow arrow-ne" aria-hidden="true"></span></a>
+ </aside>
  <div class="hero-bottom">
   <a href="#studio" class="scroll-cue"><span class="circle-arrow">↓</span><span>Discover the studio</span></a>
   <a id="hero-project" href="project.html?id=studio-dvour" class="hero-project"><span><small id="hero-project-type">Built interior · Alwarpet, Chennai</small><strong id="hero-project-name">Studio D’vour</strong></span><span class="circle-arrow arrow-ne" aria-hidden="true"></span></a>
