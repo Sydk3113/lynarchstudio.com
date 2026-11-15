@@ -8,6 +8,8 @@ if (!project) {
 } else {
   document.title = project.shortName + ' — Lynarch Studio';
   document.querySelector('meta[name="description"]').content = project.intro;
+  const coverIndex = project.images.indexOf(project.cover);
+  const viewerImages = coverIndex < 0 ? [...project.images, project.cover] : project.images;
   const next = window.projects[(window.projects.indexOf(project) + 1) % window.projects.length];
   const hero = document.createElement('section');
   hero.className = 'project-hero';
@@ -28,7 +30,13 @@ if (!project) {
   link.className = 'project-scroll';
   link.href = '#project-overview';
   link.innerHTML = 'Explore the project <span class="circle-arrow" aria-hidden="true">↓</span>';
-  caption.append(label, heading, window.projectMetadata(project, 'project-meta project-hero-meta'), link);
+  const viewCover = document.createElement('button');
+  viewCover.type = 'button';
+  viewCover.className = 'text-link project-cover-view';
+  viewCover.setAttribute('aria-haspopup', 'dialog');
+  viewCover.innerHTML = 'View full image <span class="arrow-ne" aria-hidden="true"></span>';
+  viewCover.addEventListener('click', () => openImage(coverIndex < 0 ? viewerImages.length - 1 : coverIndex));
+  caption.append(label, heading, window.projectMetadata(project, 'project-meta project-hero-meta'), viewCover, link);
   hero.append(heroOverlay, caption);
   content.append(hero);
 
@@ -129,9 +137,23 @@ if (!project) {
   }
 
   const gallery = document.createElement('section');
+  gallery.id = 'project-gallery';
   gallery.className = 'story-gallery section-pad';
   gallery.setAttribute('aria-label', project.shortName + ' image gallery');
+  let row;
   project.images.forEach((src, index) => {
+    if (index % 2 === 0) {
+      const pair = project.images.slice(index, index + 2);
+      const ratios = pair.map(path => {
+        const {width, height} = window.projectMedia[path];
+        return width / height;
+      });
+      row = document.createElement('div');
+      row.className = 'story-row';
+      row.style.setProperty('--photo-columns', ratios.map(ratio => `minmax(0, ${ratio}fr)`).join(' '));
+      row.style.setProperty('--row-ratio', ratios.reduce((sum, ratio) => sum + ratio, 0));
+      gallery.append(row);
+    }
     const figure = document.createElement('figure');
     figure.className = 'story-image reveal';
     const button = document.createElement('button');
@@ -141,7 +163,7 @@ if (!project) {
     picture.srcset = window.imageSources(src);
     picture.width = window.projectMedia[src].width;
     picture.height = window.projectMedia[src].height;
-    picture.sizes = index % 3 === 0 ? '92vw' : '(max-width: 680px) 92vw, 45vw';
+    picture.sizes = 'auto, 92vw';
     picture.loading = 'lazy';
     picture.decoding = 'async';
     picture.src = src;
@@ -153,7 +175,7 @@ if (!project) {
     button.append(picture, expand);
     button.addEventListener('click', () => openImage(index));
     figure.append(button);
-    gallery.append(figure);
+    row.append(figure);
   });
   content.append(gallery);
 
@@ -204,10 +226,10 @@ if (!project) {
   const lightbox = document.querySelector('#lightbox');
   let imageIndex = 0;
   function showImage(index) {
-    imageIndex = (index + project.images.length) % project.images.length;
-    document.querySelector('#lightbox-image').src = project.images[imageIndex];
+    imageIndex = (index + viewerImages.length) % viewerImages.length;
+    document.querySelector('#lightbox-image').src = viewerImages[imageIndex];
     document.querySelector('#lightbox-image').alt = project.shortName + ' image ' + (imageIndex + 1);
-    document.querySelector('#lightbox-count').textContent = (imageIndex + 1) + ' / ' + project.images.length;
+    document.querySelector('#lightbox-count').textContent = (imageIndex + 1) + ' / ' + viewerImages.length;
   }
   function openImage(index) {
     document.querySelector('#lightbox-title').textContent = project.shortName;
