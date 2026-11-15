@@ -7,7 +7,9 @@
 <meta name="description" content="A Chennai architecture and interiors practice led by Syed Kuraib and Amreen N. Explore homes, creative spaces and architectural studies.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=34">
+<link rel="preload" as="image" href="monogram.webp">
+<link rel="preload" as="image" href="brand.svg">
 <link rel="preload" as="image" href="media/studio-dvour/13.jpg" imagesrcset="media/studio-dvour/13-small.jpg 900w, media/studio-dvour/13.jpg 2000w" imagesizes="100vw">
 <script defer src="projects.js?v=20"></script><script defer src="common.js?v=28"></script><script defer src="home.js?v=21"></script><script defer src="cinema.js?v=16"></script>
 <link rel="icon" type="image/png" sizes="128x128" href="favicon.png">
@@ -19,14 +21,7 @@
     history.replaceState(history.state, '', openingUrl);
   }
   if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    try {
-      if (replayOpening || !sessionStorage.getItem('lynarch-opening-seen')) {
-        sessionStorage.setItem('lynarch-opening-seen', 'true');
-        document.documentElement.classList.add('show-studio-opening');
-      }
-    } catch {
-      // The homepage remains available when session storage is disabled.
-    }
+    document.documentElement.classList.add('show-studio-opening');
   }
 </script>
 </head>
