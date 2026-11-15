@@ -1,37 +1,42 @@
 const siteHeader = document.querySelector('#site-header');
 const siteFooter = document.querySelector('#site-footer');
 const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');
-const homeLink = document.body.dataset.page === 'home' ? '' : 'index.html';
+const siteRoot = document.body.dataset.siteRoot || '';
+const contactPage = document.body.dataset.page === 'contact';
+const homeLink = document.body.dataset.page === 'home' ? '' : siteRoot + 'index.html';
 siteHeader.innerHTML = `
 <header class="site-header">
- <a class="brand" href="index.html" aria-label="Lynarch Studio home"><img src="brand.svg" alt="Lynarch Studio" width="1104" height="480"></a>
+ <a class="brand" data-opening-home href="${siteRoot}index.html?opening=1" aria-label="Lynarch Studio home"><img src="${siteRoot}brand.svg" alt="Lynarch Studio" width="1104" height="480"></a>
  <p class="header-location">Architecture & interiors<br>Chennai, India</p>
- <nav class="header-links" aria-label="Primary"><a href="work.html">Work</a><a href="${homeLink}#studio">Studio</a></nav>
+ <nav class="header-links" aria-label="Primary"><a href="${siteRoot}work.html">Work</a><a href="${homeLink}#studio">Studio</a><a href="${siteRoot}design-guide/">Design Guide</a><a href="${siteRoot}contact.html">Contact</a></nav>
  <button type="button" class="header-cta" data-enquiry aria-haspopup="dialog">Start a Project</button>
  <button type="button" class="menu-toggle" aria-label="Open menu" aria-haspopup="dialog"><span>Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
 </header><div class="page-progress" aria-hidden="true"></div>`;
 siteFooter.innerHTML = `
-<footer class="site-footer section-pad" id="contact">
- <div class="footer-top"><p class="eyebrow">Begin a conversation</p><p>New build, new beginning,<br>or a fresh perspective.</p></div>
- <button class="contact-heading" data-enquiry><span>Have a space<br><em>in mind?</em></span><span class="contact-arrow arrow-ne" aria-hidden="true"></span></button>
+<footer class="site-footer section-pad${contactPage ? ' contact-footer' : ''}" id="contact">
+${contactPage ? '' : `
+ <div class="footer-top"><p class="eyebrow">Project enquiries</p><p>A plot, a floor plan, or a room<br>that needs rethinking.</p></div>
+ <button class="contact-heading" data-enquiry><span>Tell us what<br><em>you’re building.</em></span><span class="contact-arrow arrow-ne" aria-hidden="true"></span></button>
  <div class="footer-grid">
-  <a class="footer-brand" href="index.html"><img src="brand.svg" alt="Lynarch Studio" width="1104" height="480"></a>
+  <a class="footer-brand" href="${siteRoot}index.html"><img src="${siteRoot}brand.svg" alt="Lynarch Studio" width="1104" height="480"></a>
   <div><p class="eyebrow">Find us</p><address>Second Floor, SIET Admin Building<br>54 KB Dasan Road, Teynampet<br>Chennai 600018</address></div>
   <div><p class="eyebrow">Say hello</p><a href="mailto:info@lynarchstudio.com">info@lynarchstudio.com</a><br><a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span class="arrow-ne" aria-hidden="true"></span></a><br><a href="tel:+919941437908">+91 99414 37908</a><br><a href="tel:+919789093726">+91 97890 93726</a></div>
  </div>
- <div class="footer-base"><span>© ${new Date().getFullYear()} Lynarch Studio</span><a href="https://www.instagram.com/lynarch.studio/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow-ne" aria-hidden="true"></span></a><a href="https://www.linkedin.com/company/lynarch-studio" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arrow-ne" aria-hidden="true"></span></a><a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">WhatsApp <span class="arrow-ne" aria-hidden="true"></span></a><a href="#top" data-top>Back to top ↑</a></div>
+`}
+ <div class="footer-base"><span>© ${new Date().getFullYear()} Lynarch Studio</span><a href="https://www.instagram.com/lynarch.studio/" target="_blank" rel="noopener noreferrer">Instagram <span class="arrow-ne" aria-hidden="true"></span></a><a href="https://www.linkedin.com/company/lynarch-studio" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arrow-ne" aria-hidden="true"></span></a>${contactPage ? '' : `<a href="https://wa.me/message/IURUFXEX5SCUP1" target="_blank" rel="noopener noreferrer">WhatsApp <span class="arrow-ne" aria-hidden="true"></span></a><a href="#top" data-top>Back to top ↑</a>`}</div>
 </footer>`;
 document.body.insertAdjacentHTML('beforeend', `
 <dialog class="menu-dialog" aria-label="Site menu">
- <div class="menu-heading"><a class="brand" href="index.html"><img src="brand.svg" alt="Lynarch Studio" width="1104" height="480"></a><button class="menu-close" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div>
+ <div class="menu-heading"><a class="brand" data-opening-home href="${siteRoot}index.html?opening=1"><img src="${siteRoot}brand.svg" alt="Lynarch Studio" width="1104" height="480"></a><button class="menu-close" aria-label="Close menu">Close <span aria-hidden="true">×</span></button></div>
  <div class="menu-layout">
   <nav class="menu-nav" aria-label="Explore Lynarch">
-   <a href="work.html" data-menu-photo="media/hobarts-school/2.jpg"><span>Our work</span><span class="arrow-ne" aria-hidden="true"></span></a>
-   <a href="${homeLink}#studio" data-menu-photo="media/studio-dvour/13.jpg"><span>The studio</span><span class="arrow-ne" aria-hidden="true"></span></a>
-   <a href="${homeLink}#approach" data-menu-photo="media/casa-aurum/cover.jpg"><span>Our approach</span><span class="arrow-ne" aria-hidden="true"></span></a>
-   <button data-enquiry data-menu-photo="media/studio-dvour/3.jpg"><span>Let’s talk</span><span class="arrow-ne" aria-hidden="true"></span></button>
+   <a href="${siteRoot}work.html" data-menu-photo="${siteRoot}media/hobarts-school/2.jpg"><span>Our work</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <a href="${homeLink}#studio" data-menu-photo="${siteRoot}media/studio-dvour/13.jpg"><span>The studio</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <a href="${homeLink}#approach" data-menu-photo="${siteRoot}media/casa-aurum/cover.jpg"><span>Our approach</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <a href="${siteRoot}design-guide/" data-menu-photo="${siteRoot}media/study-center/cover-small.jpg" data-preview-caption="Study Center · Concept rendering"><span>Design Guide</span><span class="arrow-ne" aria-hidden="true"></span></a>
+   <a href="${siteRoot}contact.html" data-menu-photo="${siteRoot}media/studio-dvour/3.jpg"><span>Contact</span><span class="arrow-ne" aria-hidden="true"></span></a>
   </nav>
-  <div class="menu-preview"><img src="media/hobarts-school/2-small.jpg" alt="" loading="lazy"><p>Architecture. Interiors. Execution.</p></div>
+  <div class="menu-preview"><img src="${siteRoot}media/hobarts-school/2-small.jpg" alt="" loading="lazy"><p hidden></p></div>
  </div><div class="menu-bottom"><span>Chennai, India</span><a href="mailto:info@lynarchstudio.com">info@lynarchstudio.com</a></div>
 </dialog>
 <dialog class="enquiry-dialog" aria-labelledby="enquiry-heading">
@@ -52,7 +57,15 @@ document.body.insertAdjacentHTML('beforeend', `
    <p id="brief-status" role="status"></p><a id="brief-mail-link" hidden>Send by email instead <span class="arrow-ne" aria-hidden="true"></span></a>
   </fieldset>
  </form>
-</dialog><div class="transition-screen" aria-hidden="true"><img src="brand.svg" alt=""></div>`);
+</dialog><div class="transition-screen" aria-hidden="true"><div class="opening-identity"><img class="opening-mark" src="${siteRoot}monogram.webp" alt=""><img class="opening-wordmark" src="${siteRoot}brand.svg" alt=""></div></div>`);
+document.querySelectorAll('.header-links a, .menu-nav a').forEach(link => {
+ const destination = new URL(link.href);
+ const currentPath = location.pathname.replace(/index\.html$/, '');
+ if (!destination.hash && destination.pathname === currentPath) link.setAttribute('aria-current', 'page');
+ if (document.body.dataset.page === 'guide' && destination.pathname === new URL(siteRoot + 'design-guide/', location.href).pathname) {
+  link.setAttribute('aria-current', currentPath === destination.pathname ? 'page' : 'location');
+ }
+});
 const menu = document.querySelector('.menu-dialog');
 const enquiry = document.querySelector('.enquiry-dialog');
 document.querySelector('.menu-toggle').addEventListener('click', () => menu.showModal());
@@ -61,10 +74,13 @@ document.querySelector('.enquiry-close').addEventListener('click', () => enquiry
 document.querySelectorAll('[data-enquiry]').forEach(button => {
  button.addEventListener('click', () => { if (menu.open) menu.close(); enquiry.showModal(); });
 });
-const menuImage = document.querySelector('.menu-preview img');
+const menuImage = menu.querySelector('.menu-preview img');
+const menuCaption = menu.querySelector('.menu-preview p');
 document.querySelectorAll('[data-menu-photo]').forEach(item => {
  const update = () => {
   menuImage.src = item.dataset.menuPhoto;
+  menuCaption.textContent = item.dataset.previewCaption || "";
+  menuCaption.hidden = !item.dataset.previewCaption;
   if (!motionQuery.matches) menuImage.animate([{opacity:.5,transform:'scale(1.04)'},{opacity:1,transform:'scale(1)'}],{duration:420,easing:'ease-out'});
  };
  item.addEventListener('pointerenter', update);
@@ -154,12 +170,30 @@ let navigationTimer;
 document.addEventListener('click', event => {
  const link = event.target.closest('a');
  if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || link.target || link.download || motionQuery.matches) return;
+ if (link.hasAttribute('data-opening-home')) {
+  if (document.body.dataset.page === 'home') {
+   event.preventDefault();
+   window.scrollTo({top:0, behavior:'instant'});
+   history.replaceState(history.state, '', location.pathname + location.search);
+   const root = document.documentElement;
+   root.classList.remove('show-studio-opening');
+   void root.offsetWidth;
+   root.classList.add('show-studio-opening');
+  }
+  return;
+ }
  const destination = new URL(link.href,location.href);
- if (destination.origin !== location.origin || destination.pathname === location.pathname && destination.search === location.search) return;
+ const samePage = destination.pathname === location.pathname && destination.search === location.search;
+ const studioAnchor = samePage && destination.hash === '#studio' && link.closest('.header-links, .menu-nav');
+ if (destination.origin !== location.origin || (samePage && !studioAnchor)) return;
  event.preventDefault();
  if (navigationTimer) return;
  document.body.classList.add('leaving');
- navigationTimer=setTimeout(()=>location.assign(destination.href),420);
+ navigationTimer=setTimeout(()=>{
+  navigationTimer=null;
+  location.assign(destination.href);
+  if (samePage) document.body.classList.remove('leaving');
+ },1000);
 });
 addEventListener('pageshow',()=>{clearTimeout(navigationTimer);navigationTimer=null;document.body.classList.remove('leaving');});
 window.projectHref = project => 'project.html?id='+encodeURIComponent(project.id);

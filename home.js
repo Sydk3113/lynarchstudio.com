@@ -15,6 +15,19 @@ document.querySelectorAll('[data-slide]').forEach(button => {
   document.querySelectorAll('[data-slide]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
  });
 });
+const monogram = document.querySelector('.hero-monogram');
+const heroTabs = document.querySelectorAll('[data-slide]');
+monogram.hidden = false;
+monogram.addEventListener('click', () => {
+ const nextSlide = (activeHero + 1) % heroTabs.length;
+ heroTabs[nextSlide].click();
+ if (!motionQuery.matches) {
+  monogram.querySelector('img').animate(
+   [{ transform: 'rotate(-18deg) scale(.88)' }, { transform: 'rotate(0) scale(1)' }],
+   { duration: 380, easing: 'ease-out' }
+  );
+ }
+});
 const selected=['voora-villa','casa-aurum','don-bosco-villa','dac-704','studio-dvour','hobarts-school','prestige-bella'];
 const rail=document.querySelector('#work-rail');
 selected.forEach(id=>{
